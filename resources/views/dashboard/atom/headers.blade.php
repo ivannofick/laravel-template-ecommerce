@@ -1,5 +1,5 @@
 <div class="w-[1366px] h-[70px] relative">
-    <div class="w-[1366px] h-[70px] left-2 top-[15px] absolute">
+    <div class="w-[1366px] h-[70px] left-4 top-[15px] absolute">
       <img src="{{ asset('assets/img/logo.svg') }}" />
     </div>
     <div class="w-[214px] h-10 left-[1112px] top-[15px] absolute">
