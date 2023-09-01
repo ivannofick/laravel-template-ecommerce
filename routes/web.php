@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.homepage');
+// Route::get('/', function () {
+//     return view('dashboard.homepage');
+// });
+
+Route::controller(App\Http\Controllers\ProductsController::class)->group(function () {
+    Route::get('/', 'index')->name('homepage');
+    
 });
