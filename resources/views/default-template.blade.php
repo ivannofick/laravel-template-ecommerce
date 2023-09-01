@@ -4,7 +4,7 @@
         @include('template.head')
     </head>
     <body>
-        <div id="main" class="bg-white shadow-md ">
+        <div id="main" class="bg-white w-full">
             @yield('contents')
         </div>
         <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
