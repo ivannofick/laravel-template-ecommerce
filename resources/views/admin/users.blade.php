@@ -31,10 +31,16 @@
                                   Nama Users
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                  Tanggal di buat
+                                  Email
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                  Harga (Rp)
+                                  No Telepon
+                                </th>
+                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                  Status
+                                </th>
+                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                  Action
                                 </th>
                               </tr>
                             </thead>
@@ -48,10 +54,24 @@
                                     {{$item->name}}
                                   </td>
                                   <td class="px-6 py-4 whitespace-no-wrap">
-                                    {{date('d-m-Y')}}
+                                    {{$item->email}}
                                   </td>
                                   <td class="px-6 py-4 whitespace-no-wrap">
-                                    {{$item->email}}
+                                    {{$item->phone_number}}
+                                  </td>
+                                  <td class="px-6 py-4 whitespace-no-wrap">
+                                    <button class="bg-green-500 text-white font-bold py-2 px-4 rounded-full">Aktif</button>
+                                    <button class="bg-red-500 text-white font-bold py-2 px-4 rounded-full opacity-50 cursor-not-allowed">Tidak Aktif</button>
+                                  </td>
+                                  <td class="px-6 py-4 whitespace-no-wrap">
+                                    <div class="flex justify-between">
+                                      <button class="bg-green-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full flex items-center">
+                                        <img src="{{asset('assets/img/icon/eye.svg')}}" alt="View" class="w-4 h-4" />
+                                      </button>
+                                      <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full flex items-center">
+                                        <img src="{{asset('assets/img/icon/notepencil.svg')}}" alt="Edit" class="w-4 h-4" />
+                                      </button>
+                                    </div>
                                   </td>
                                 </tr>
                               @endforeach
