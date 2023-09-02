@@ -4,12 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Traits\Api;
+
 
 class UsersController extends Controller
 {
     public function index(Request $request)
     {
-        return view('admin.users');
-
+        $data = $this->apiGet("/product/data?skip=0&take=5");
+        if ($data->code->status === 0) {
+            $totalProduct = count($data->data);
+            $dataProduct = $data->data;
+            return view('admin.users', compact('dataProduct', 'totalProduct'));
+        }
     }
 }
