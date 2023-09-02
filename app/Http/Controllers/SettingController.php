@@ -18,9 +18,14 @@ class SettingController extends Controller
         if ($data->code->status === 0) {
             $data = $data->data;
             // Cookie::queue('auth_', $data, (time() + 60 * 60 * 24 * 365));
-            setcookie('auth_', $data, (time() + 60 * 60 * 24 * 365), '/', config('session.domain'), false, false);
+            setcookie('auth_', $data, (time() + 60 * 60 * 24 * 365), '/', env('SESSION_DOMAIN'), false, true);
             return redirect('/');
 
         }
+    }
+    public function logout(Request $request)
+    {
+        Cookie::forget('auth_');
+        return redirect('/')->withoutCookie('auth_');;
     }
 }

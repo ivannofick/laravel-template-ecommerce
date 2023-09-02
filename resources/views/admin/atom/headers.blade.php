@@ -25,7 +25,7 @@
               <span class="text-black text-sm font-normal">Aden S. Putra</span>
               <span class="text-black text-xs font-normal">Aden@gmail.com</span>
             </div>
-            <a href="#" class="block px-4 py-2 text-red-600 hover:bg-gray-100 text-center">Logout</a>
+            <a href="{{ route('logout') }}" class="block px-4 py-2 text-red-600 hover:bg-gray-100 text-center">Logout</a>
           </div>
         </div>
         

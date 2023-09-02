@@ -3,7 +3,7 @@
       <img src="{{ asset('assets/img/logo.svg') }}" />
     </div>
     <div class="w-[214px] h-10 left-[1112px] top-[15px] absolute">
-      @if (!$_COOKIE['auth_'])
+      @if (!isset($_COOKIE['auth_']))
         <a href="{{ route('login') }}" class="w-24 h-10 px-4 py-2 left-0 top-0 absolute border border-blue-500 justify-center items-center gap-2.5 inline-flex">
           <div class="text-blue-500 text-sm font-bold tracking-[3.50px]">MASUK</div>
         </a>
