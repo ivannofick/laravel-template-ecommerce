@@ -25,3 +25,12 @@ Route::controller(App\Http\Controllers\SettingController::class)->group(function
     Route::get('/login', 'login')->name('login');
     Route::post('/post-login', 'postLogin')->name('post-login');    
 });
+
+
+Route::controller(App\Http\Controllers\Admin\DashboardController::class)->group(function () {
+    Route::get('/account/{name}', 'index')->name('dashboard-admin');
+});
+
+Route::controller(App\Http\Controllers\Admin\UsersController::class)->group(function () {
+    Route::get('/users/{name}', 'index')->name('users-admin');
+});
