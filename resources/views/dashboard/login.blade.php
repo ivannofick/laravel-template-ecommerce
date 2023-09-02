@@ -13,11 +13,11 @@
                 @csrf
                 <div class="h-8 rounded-sm mb-12">
                     <div class="text-neutral-500 text-xs font-normal">Email / Nomor Telpon</div>
-                    <input class="w-full h-11 py-2 px-4 bg-white border border-zinc-500" id="username" name="username" type="text" placeholder="email">
+                    <input class="w-full h-11 py-2 px-4 bg-white border border-zinc-500" id="username" name="email" type="text" placeholder="email">
                 </div>
                 <div class="h-8 rounded-sm mb-12">
                     <div class="text-neutral-500 text-xs font-normal">Password</div>
-                    <input class="w-full h-11 py-2 px-4 bg-white border border-zinc-500" id="password" name="password" type="text" placeholder="password">
+                    <input class="w-full h-11 py-2 px-4 bg-white border border-zinc-500" id="password" name="password" type="password" placeholder="password">
                 </div>
                 <button class="w-full h-11 bg-blue-500">
                     <div class="text-center text-white text-sm font-semibold">MASUK</div>

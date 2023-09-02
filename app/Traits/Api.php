@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Request;
 
 trait Api
 {
+    function getToken()
+    {
+        $key = session('token');
+        return $key;
+    }
+
     function apiGet($url)
     {
         $key = $this->getToken();
@@ -26,9 +32,23 @@ trait Api
         return $results;
     }
 
-    function getToken()
+    function apiPost($url, $data=[])
     {
-        $key = session('token');
-        return $key;
+        $key = $this->getToken();
+        $this->client = new Client();
+
+        $url = env('API_URL') . $url;
+        $response = $this->client->request('POST', $url, [
+            'setEncodingType' => false,
+            'headers' => [
+                'Authorization' => $key,
+            ],
+            'form_params' => $data
+        ]);
+
+        $results = json_decode($response->getBody());
+
+        return $results;
     }
+
 }

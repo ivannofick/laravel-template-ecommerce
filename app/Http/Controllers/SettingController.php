@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class SettingController extends Controller
 {
@@ -12,11 +13,13 @@ class SettingController extends Controller
     }
     public function postLogin(Request $request)
     {
-        dd($request->all());
-        $data = $this->apiGet("/product/data?skip=0&take=5");
+        $input = $request->all();
+        $data = $this->apiPost("/users/login", $input);
         if ($data->code->status === 0) {
             $data = $data->data;
-            return view('dashboard.homepage', compact('data'));
+            // Cookie::queue('auth_', $data, (time() + 60 * 60 * 24 * 365));
+            setcookie('auth_', $data, (time() + 60 * 60 * 24 * 365), '/', config('session.domain'), false, false);
+            return redirect('/');
 
         }
     }
