@@ -13,7 +13,7 @@
                         <div class="w-56 h-28 flex flex-col justify-between p-4">
                             <div class="mx-3 my-2 text-slate-500 text-sm font-normal">Jumlah User</div>
                             <div class="mx-3 my-2">
-                                <span class="text-blue-950 text-2xl font-normal leading-7">150 </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
+                                <span class="text-blue-950 text-2xl font-normal leading-7">{{ $totalProduct }} </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                         <div class="w-56 h-28 flex flex-col justify-between p-4">
                             <div class="mx-3 my-2 text-slate-500 text-sm font-normal">Jumlah User Aktif</div>
                             <div class="mx-3 my-2">
-                                <span class="text-blue-950 text-2xl font-normal leading-7">150 </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
+                                <span class="text-blue-950 text-2xl font-normal leading-7">{{ $totalProduct - 2}} </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         <div class="w-56 h-28 flex flex-col justify-between p-4">
                             <div class="mx-3 my-2 text-slate-500 text-sm font-normal">Jumlah Product</div>
                             <div class="mx-3 my-2">
-                                <span class="text-blue-950 text-2xl font-normal leading-7">150 </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
+                                <span class="text-blue-950 text-2xl font-normal leading-7">{{ $totalProduct }} </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <div class="w-56 h-28 flex flex-col justify-between p-4">
                             <div class="mx-3 my-2 text-slate-500 text-sm font-normal">Jumlah Product Aktif</div>
                             <div class="mx-3 my-2">
-                                <span class="text-blue-950 text-2xl font-normal leading-7">150 </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
+                                <span class="text-blue-950 text-2xl font-normal leading-7">{{ $totalProduct }} </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
                             </div>
                         </div>
                     </div>                   
@@ -52,40 +52,30 @@
                             <thead>
                               <tr>
                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                  Nama
+                                  Product
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                  Email
+                                  Tanggal di buat
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                  Role
+                                  Harga (Rp)
                                 </th>
                               </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                              <tr>
-                                <td class="px-6 py-4 whitespace-no-wrap">
-                                  John Doe
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap">
-                                  john@example.com
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap">
-                                  Admin
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="px-6 py-4 whitespace-no-wrap">
-                                  Jane Smith
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap">
-                                  jane@example.com
-                                </td>
-                                <td class="px-6 py-4 whitespace-no-wrap">
-                                  User
-                                </td>
-                              </tr>
-                              <!-- Tambahkan baris lain jika diperlukan -->
+                              @foreach ($dataProduct as $item)
+                                <tr>
+                                  <td class="px-6 py-4 whitespace-no-wrap">
+                                    {{$item->name}}
+                                  </td>
+                                  <td class="px-6 py-4 whitespace-no-wrap">
+                                    {{date('d-m-Y')}}
+                                  </td>
+                                  <td class="px-6 py-4 whitespace-no-wrap">
+                                    {{$item->price}}
+                                  </td>
+                                </tr>
+                              @endforeach
                             </tbody>
                           </table>
                     </div>
