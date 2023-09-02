@@ -29,9 +29,9 @@ Route::controller(App\Http\Controllers\SettingController::class)->group(function
 
 
 Route::controller(App\Http\Controllers\Admin\DashboardController::class)->group(function () {
-    Route::get('/account/{name}', 'index')->name('dashboard-admin');
+    Route::get('/account/{name}', 'index')->name('dashboard-admin')->middleware('checkauth');
 });
 
 Route::controller(App\Http\Controllers\Admin\UsersController::class)->group(function () {
-    Route::get('/users/{name}', 'index')->name('users-admin');
+    Route::get('/users/{name}', 'index')->name('users-admin')->middleware('checkauth');
 });

@@ -25,7 +25,10 @@
                             <thead>
                               <tr>
                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                  Product
+                                  No
+                                </th>
+                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                  Nama Users
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                   Tanggal di buat
@@ -36,8 +39,11 @@
                               </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                              @foreach ($dataProduct as $item)
+                              @foreach ($dataUsers as $key => $item)
                                 <tr>
+                                  <td class="px-6 py-4 whitespace-no-wrap">
+                                    {{$key + 1}}
+                                  </td>
                                   <td class="px-6 py-4 whitespace-no-wrap">
                                     {{$item->name}}
                                   </td>
@@ -45,7 +51,7 @@
                                     {{date('d-m-Y')}}
                                   </td>
                                   <td class="px-6 py-4 whitespace-no-wrap">
-                                    {{$item->price}}
+                                    {{$item->email}}
                                   </td>
                                 </tr>
                               @endforeach

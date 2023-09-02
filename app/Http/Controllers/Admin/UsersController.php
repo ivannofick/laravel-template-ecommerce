@@ -11,11 +11,10 @@ class UsersController extends Controller
 {
     public function index(Request $request)
     {
-        $data = $this->apiGet("/product/data?skip=0&take=5");
+        $data = $this->apiGet("/users/data?skip=0&take=5", true);
         if ($data->code->status === 0) {
-            $totalProduct = count($data->data);
-            $dataProduct = $data->data;
-            return view('admin.users', compact('dataProduct', 'totalProduct'));
+            $dataUsers = $data->data;
+            return view('admin.users', compact('dataUsers'));
         }
     }
 }

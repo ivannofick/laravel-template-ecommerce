@@ -14,13 +14,14 @@ class SettingController extends Controller
     public function postLogin(Request $request)
     {
         $input = $request->all();
-        $data = $this->apiPost("/users/login", $input);
+        $data = $this->apiPost("/users/login", $input, false);
         if ($data->code->status === 0) {
             $data = $data->data;
             // Cookie::queue('auth_', $data, (time() + 60 * 60 * 24 * 365));
             setcookie('auth_', $data, (time() + 60 * 60 * 24 * 365), '/', env('SESSION_DOMAIN'), false, true);
             return redirect('/');
-
+        } else {
+            return redirect('/login');
         }
     }
     public function logout(Request $request)
