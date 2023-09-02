@@ -4,6 +4,7 @@
         @include('template.head')
     </head>
     <body>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <div id="main" class="bg-white w-full">
             @yield('contents')
         </div>

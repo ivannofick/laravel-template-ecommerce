@@ -21,3 +21,7 @@ Route::controller(App\Http\Controllers\ProductsController::class)->group(functio
     Route::get('/', 'index')->name('homepage');
     
 });
+Route::controller(App\Http\Controllers\SettingController::class)->group(function () {
+    Route::get('/login', 'login')->name('login');
+    Route::post('/post-login', 'postLogin')->name('post-login');    
+});

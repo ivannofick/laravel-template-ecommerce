@@ -14,7 +14,6 @@ trait Api
         $this->client = new Client();
 
         $url = env('API_URL') . $url;
-
         $response = $this->client->request('GET', $url, [
             'setEncodingType' => false,
             'headers' => [

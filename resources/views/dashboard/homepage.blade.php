@@ -3,16 +3,19 @@
 @include('dashboard.atom.headers')
 <div class="p-24">
     <div class="text-stone-900 text-2xl font-bold pb-12">Product Tersedia</div>
-    @foreach ($data as $item)
-        <div class="w-44 h-64 bg-white shadow border border-neutral-300">
-            <img class="w-full h-40" src="{{ asset('assets/img/\\').$item->image }}" />
-            <div class="w-full p-4 h-[94px] mt-4">
-                <p class="text-stone-900 text-sm font-bold leading-none">{{ $item->name }}</p>
-                <p class="text-blue-500 text-sm font-bold">IDR {{ $item->price }}</p>
+    <div class="grid grid-cols-4 gap-4">
+        @foreach ($data as $item)
+            <div class="w-44 h-64 bg-white shadow border border-neutral-300">
+                <img class="w-full h-40" src="{{ asset('assets/img/\\').$item->image }}" />
+                <div class="w-full p-4 h-[94px] mt-4">
+                    <p class="text-stone-900 text-sm font-bold leading-none">{{ $item->name }}</p>
+                    <p class="text-blue-500 text-sm font-bold">IDR {{ $item->price }}</p>
+                </div>
             </div>
-        </div>
-        
-    @endforeach
+            
+        @endforeach
+    </div>
+
 </div>
 @include('dashboard.atom.footers')
 <script type="text/javascript">
