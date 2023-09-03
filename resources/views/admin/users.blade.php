@@ -18,7 +18,7 @@
                         <div class="flex justify-between items-center mb-4">
                             <h1 class="text-2xl font-semibold text-gray-800">Daftar Produk</h1>
                             <button id="showModalButton" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
-                              Tambah Product
+                              Tambah Users
                             </button>
                         </div>
                         <table class="min-w-full divide-y divide-gray-200">
@@ -72,9 +72,9 @@
                                       <button class="bg-green-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full flex items-center">
                                         <img src="{{asset('assets/img/icon/eye.svg')}}" alt="View" class="w-4 h-4" />
                                       </button>
-                                      <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full flex items-center">
+                                      <a id="get-detail" onclick="getDetail({{ $item->id }}, {{ $item->status }})" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full flex items-center">
                                         <img src="{{asset('assets/img/icon/notepencil.svg')}}" alt="Edit" class="w-4 h-4" />
-                                      </button>
+                                      </a>
                                     </div>
                                   </td>
                                 </tr>
@@ -83,34 +83,32 @@
                           </table>
                     </div>
                 </div>
-                <div id="myModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+                <div id="myModalDetail" class="fixed inset-0 flex items-center justify-center z-50 hidden">
                     <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
                   
                     <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
                       <div class="modal-content py-4 text-left px-6">
                         <!-- Isi modal Anda di sini -->
-                        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Add Product</h2>
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Add User</h2>
                         <p class="text-gray-700 mb-4">
-                          <form class="w-auto" method="POST" action="{{ route('post-login') }}">
-                            @csrf
-                            <div class="h-8 rounded-sm mb-12">
-                                <div class="text-neutral-500 text-xs font-normal">Email / Nomor Telpon</div>
-                                <input class="w-full h-11 py-2 px-4 bg-white border border-zinc-500" id="username" name="email" type="text" placeholder="email">
+                          <div class="w-auto mb-6" method="POST" action="{{ route('post-login') }}">
+                            <div class="h-8 rounded-sm mb-4">
+                                <div class="text-neutral-500 text-xs font-normal">Name</div>
+                                <p class="text-neutral-500 text-xs font-normal" id="name_user"></p>
                             </div>
                             <div class="h-8 rounded-sm mb-12">
-                                <div class="text-neutral-500 text-xs font-normal">Password</div>
-                                <input class="w-full h-11 py-2 px-4 bg-white border border-zinc-500" id="password" name="password" type="password" placeholder="password">
+                                <div class="text-neutral-500 text-xs font-normal">No Telepon</div>
+                                <p class="text-neutral-500 text-xs font-normal" id="phone_number_user"></p>
                             </div>
-                            <button class="w-full h-11 bg-blue-500">
-                                <div class="text-center text-white text-sm font-semibold">MASUK</div>
-                            </button>
-                        </form>
-
+                          </div>
                         </p>
-                        <div class="flex justify-end">
-                          <button id="closeModalButton" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 focus:outline-none focus:bg-gray-300">
+                        <div class="flex justify-between">
+                          <a class="cursor-pointer rounded-lg bg-blue-500 px-4 py-2 text-center text-white text-sm font-semibold" id="button_approve">
+                            Approve
+                          </a>
+                          <a onclick="hideModal('myModalDetail')" id="closeModalButton" class="cursor-pointer px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 focus:outline-none focus:bg-gray-300">
                             Tutup
-                          </button>
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -120,19 +118,72 @@
     </div>
 </div>
 <script>
-    const showModalButton = document.getElementById('showModalButton');
-    const closeModalButton = document.getElementById('closeModalButton');
-    const modal = document.getElementById('myModal');
+    // const showModalButton = document.getElementById('showModalButton');
+    // const closeModalButton = document.getElementById('closeModalButton');
+    // const modal = document.getElementById('myModal');
   
-    showModalButton.addEventListener('click', function () {
-      modal.classList.remove('hidden');
+    // showModalButton.addEventListener('click', function () {
+    //   modal.classList.remove('hidden');
+    //   document.body.classList.add('modal-active');
+    // });
+  
+    // closeModalButton.addEventListener('click', function () {
+    //   modal.classList.add('hidden');
+    //   document.body.classList.remove('modal-active');
+    // });
+
+
+    function getDetail(id, status) {
+        if (status == 2) {
+          $("#button_approve").css('visibility', 'visible');
+        } else if (status == 1) {
+          $("#button_approve").css('visibility', 'hidden');
+        }
+        $("#button_approve").attr("attr-id", id);
+        $.ajax({
+            url: "{{ env('API_URL') }}/users/get-user?id="+id,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            success: function (data) {
+                if (data.code.status === 0) {
+                    const response = data.data;
+                    $('#name_user').text(response.name);
+                    $('#phone_number_user').text(response.phone_number);
+                    showModal('myModalDetail');
+                }
+
+            }
+        });
+    }
+
+    function showModal(modal) {
+      document.getElementById(modal).classList.remove('hidden');
       document.body.classList.add('modal-active');
-    });
-  
-    closeModalButton.addEventListener('click', function () {
-      modal.classList.add('hidden');
+    }
+    function hideModal(modal) {
+      document.getElementById(modal).classList.add('hidden');
       document.body.classList.remove('modal-active');
-    });
+    }
+
+    $('#button_approve').click(function() {
+      let id = $(this).attr('attr-id');
+        $.ajax({
+            url: "{{ env('API_URL') }}/users/approve-user?id="+id,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            success: function (data) {
+                if (data.code.status === 0) {
+                    location.reload(true)
+                    hideModal('myModalDetail');
+                }
+
+            }
+        });
+    })
   </script>
 
 @endsection
