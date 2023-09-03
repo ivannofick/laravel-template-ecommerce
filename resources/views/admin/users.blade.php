@@ -89,8 +89,24 @@
                     <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
                       <div class="modal-content py-4 text-left px-6">
                         <!-- Isi modal Anda di sini -->
-                        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Judul Modal</h2>
-                        <p class="text-gray-700 mb-4">Konten modal Anda di sini.</p>
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Add Product</h2>
+                        <p class="text-gray-700 mb-4">
+                          <form class="w-auto" method="POST" action="{{ route('post-login') }}">
+                            @csrf
+                            <div class="h-8 rounded-sm mb-12">
+                                <div class="text-neutral-500 text-xs font-normal">Email / Nomor Telpon</div>
+                                <input class="w-full h-11 py-2 px-4 bg-white border border-zinc-500" id="username" name="email" type="text" placeholder="email">
+                            </div>
+                            <div class="h-8 rounded-sm mb-12">
+                                <div class="text-neutral-500 text-xs font-normal">Password</div>
+                                <input class="w-full h-11 py-2 px-4 bg-white border border-zinc-500" id="password" name="password" type="password" placeholder="password">
+                            </div>
+                            <button class="w-full h-11 bg-blue-500">
+                                <div class="text-center text-white text-sm font-semibold">MASUK</div>
+                            </button>
+                        </form>
+
+                        </p>
                         <div class="flex justify-end">
                           <button id="closeModalButton" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 focus:outline-none focus:bg-gray-300">
                             Tutup

@@ -35,5 +35,9 @@ Route::controller(App\Http\Controllers\Admin\DashboardController::class)->group(
 });
 
 Route::controller(App\Http\Controllers\Admin\UsersController::class)->group(function () {
-    Route::get('/users/{name}', 'index')->name('users-admin')->middleware('checkauthAdmin');
+    Route::get('/users', 'index')->name('users-admin')->middleware('checkauthAdmin');
+});
+
+Route::controller(App\Http\Controllers\Admin\ProductsController::class)->group(function () {
+    Route::get('/products', 'index')->name('products-admin')->middleware('checkauthAdmin');
 });
