@@ -6,7 +6,7 @@
     <div class="w-auto h-96">
         <div class="p-24">
             <div class="mb-6">
-                <div class="text-neutral-700 text-2xl font-medium mb-4">Selamat Datang Admin</div>
+                <div class="text-neutral-700 text-2xl font-medium mb-4">Selamat Datang</div>
                 <div class="text-neutral-400 text-xs font-normal">Silahkan masukkan email atau nomor telepon dan password<br/>Anda untuk mulai menggunakan aplikasi</div>
             </div>
             <form class="w-auto" method="POST" action="{{ route('post-login') }}">

@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('dashboard.homepage');
+// Route::get('/date', function () {
+//     return date('d-m-Y', strtotime(date('Y-m-d H:i:s')));
 // });
 
 Route::controller(App\Http\Controllers\ProductsController::class)->group(function () {
@@ -23,8 +23,10 @@ Route::controller(App\Http\Controllers\ProductsController::class)->group(functio
 });
 Route::controller(App\Http\Controllers\SettingController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
+    Route::get('/register', 'register')->name('register');
     Route::get('/logout', 'logout')->name('logout');
-    Route::post('/post-login', 'postLogin')->name('post-login');    
+    Route::post('/post-register', 'postRegister')->name('post-register');  
+    Route::post('/post-login', 'postLogin')->name('post-login');  
 });
 
 

@@ -11,10 +11,10 @@
           <div class="text-orange-100 text-sm font-bold tracking-[3.50px]">DAFTAR</div>
         </button>
       @else
-      <a href="{{ route('dashboard-admin', ['name'=> 'aku']) }}" class="left-[122px]">
+      <a href="{{ route('dashboard-admin', ['name'=> session()->get('name')]) }}" class="left-[122px]">
         <div class="w-24 h-9 relative">
-          <div class="w-auto text-blue-500 text-xs font-normal">Hallo Admin,</div>
-          <div class="w-auto text-black text-sm font-normal">Aden S. Putra</div>
+          <div class="w-auto text-blue-500 text-xs font-normal">Hallo {{session()->get('roles') == 1 ? "Admin" : "Customer"}},</div>
+          <div class="w-auto text-black text-sm font-normal">{{ session()->get('name') }}</div>
         </div>
         <div class="w-auto h-10 px-4 left-[90px] top-0 absolute inline-flex">
           <div class="w-10 h-10 bg-stone-300 rounded-full"></div>

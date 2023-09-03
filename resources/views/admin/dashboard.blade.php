@@ -69,7 +69,7 @@
                                     {{$item->name}}
                                   </td>
                                   <td class="px-6 py-4 whitespace-no-wrap">
-                                    {{date('d-m-Y')}}
+                                    {{date('d-m-Y', strtotime($item->production_date))}}
                                   </td>
                                   <td class="px-6 py-4 whitespace-no-wrap">
                                     {{$item->price}}
