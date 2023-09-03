@@ -60,8 +60,12 @@
                                     {{$item->phone_number}}
                                   </td>
                                   <td class="px-6 py-4 whitespace-no-wrap">
-                                    <button class="bg-green-500 text-white font-bold py-2 px-4 rounded-full">Aktif</button>
-                                    <button class="bg-red-500 text-white font-bold py-2 px-4 rounded-full opacity-50 cursor-not-allowed">Tidak Aktif</button>
+                                    @if ($item->status == 1)
+                                      <button class="bg-green-500 text-white font-bold py-2 px-4 rounded-full">Aktif</button>
+                                        
+                                    @else
+                                      <button class="bg-red-500 text-white font-bold py-2 px-4 rounded-full opacity-50 cursor-not-allowed">Tidak Aktif</button> 
+                                    @endif
                                   </td>
                                   <td class="px-6 py-4 whitespace-no-wrap">
                                     <div class="flex justify-between">
