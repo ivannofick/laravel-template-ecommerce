@@ -7,9 +7,9 @@
         <a href="{{ route('login') }}" class="w-24 h-10 px-4 py-2 left-0 top-0 absolute border border-blue-500 justify-center items-center gap-2.5 inline-flex">
           <div class="text-blue-500 text-sm font-bold tracking-[3.50px]">MASUK</div>
         </a>
-        <button class="w-[102px] h-10 px-4 py-2 left-[112px] top-0 absolute bg-blue-500 justify-center items-center gap-2.5 inline-flex">
+        <a  href="{{ route('register') }}" class="w-[102px] h-10 px-4 py-2 left-[112px] top-0 absolute bg-blue-500 justify-center items-center gap-2.5 inline-flex">
           <div class="text-orange-100 text-sm font-bold tracking-[3.50px]">DAFTAR</div>
-        </button>
+        </a>
       @else
       <a href="{{ route('dashboard-admin', ['name'=> session()->get('name')]) }}" class="left-[122px]">
         <div class="w-24 h-9 relative">
