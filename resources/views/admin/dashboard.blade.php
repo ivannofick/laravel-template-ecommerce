@@ -13,7 +13,7 @@
                         <div class="w-56 h-28 flex flex-col justify-between p-4">
                             <div class="mx-3 my-2 text-slate-500 text-sm font-normal">Jumlah User</div>
                             <div class="mx-3 my-2">
-                                <span class="text-blue-950 text-2xl font-normal leading-7">{{ $totalProduct }} </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
+                                <span class="text-blue-950 text-2xl font-normal leading-7">{{ $totalUser }} </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                         <div class="w-56 h-28 flex flex-col justify-between p-4">
                             <div class="mx-3 my-2 text-slate-500 text-sm font-normal">Jumlah User Aktif</div>
                             <div class="mx-3 my-2">
-                                <span class="text-blue-950 text-2xl font-normal leading-7">{{ $totalProduct - 2}} </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
+                                <span class="text-blue-950 text-2xl font-normal leading-7">{{ $totalActiveUser }} </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <div class="w-56 h-28 flex flex-col justify-between p-4">
                             <div class="mx-3 my-2 text-slate-500 text-sm font-normal">Jumlah Product Aktif</div>
                             <div class="mx-3 my-2">
-                                <span class="text-blue-950 text-2xl font-normal leading-7">{{ $totalProduct }} </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
+                                <span class="text-blue-950 text-2xl font-normal leading-7">{{ $totalActiveProduct }} </span><span class="text-blue-950 text-base font-normal leading-tight">User</span>
                             </div>
                         </div>
                     </div>                   

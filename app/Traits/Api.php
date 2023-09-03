@@ -11,8 +11,7 @@ trait Api
 {
     function getToken($useToken=false)
     {
-        $key = $useToken ? $_COOKIE['auth_'] : null;
-
+        $key = $useToken ? session()->get('access_token') : null;
         return $key;
     }
 
